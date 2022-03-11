@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="GET" style="display: flex;">
+    <input type='text' name='search-area' placeholder="Enter Search here" value="{{search_input}}">
+    <input class="button" type="submit" value='Search'>
+</form>
+    {% for post in posts %}
+        <div class="post-entry">
+            <h2><a href="{%url 'post_detail' post.id %}">{{ post.title }}</a></h2>
+            <p>{{ post.body }}</p>
+        </div>
+        {%empty%}
+        <h3>No Posts!</h3>
+    {% endfor %}
+{% endblock content %}
